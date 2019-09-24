@@ -1,0 +1,36 @@
+﻿@model IEnumerable<LearnerPlatform.Models.Snap97_NS_CS.Course>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Courses available</h2>
+<form method="get">
+    <input type="text" name="searchTerm" />
+    <input type="submit" value="Search" id="submit"/>
+</form>
+
+<table class="table">
+    <tr>
+        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.course_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr id="courses">
+        <td>
+            @Html.HiddenFor(modelItem => item.course_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.course_name)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new {id=item.course_id})
+        </td>
+    </tr>
+}
+
+</table>
