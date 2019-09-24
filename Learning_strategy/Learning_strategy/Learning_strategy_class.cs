@@ -37,9 +37,14 @@ namespace Learning_strategy
             return data;
         }
         ////4
-        public int Create_learning_path(int PATHID, int learnerid)
+        public int Create_learning_path(int learnerid)
         {
-            int data = obj.create_learning_path(PATHID, learnerid);
+            int data = obj.create_learning_path( learnerid);
+            return data;
+        }
+        public int Get_new_pathid(int LearnerId)
+        {
+            int data = obj.get_new_pathid(LearnerId);
             return data;
         }
 

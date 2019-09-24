@@ -130,16 +130,12 @@ namespace learning_DAL
 
 
         ////4
-        public int create_learning_path(int PATHID, int learnerid)
+        public int create_learning_path(int learnerid)
         {
             cmd = new SqlCommand();
             cmd.CommandText = "create_learning_path";
             cmd.CommandType = CommandType.StoredProcedure;
-            SqlParameter pathId = new SqlParameter();
-            pathId.ParameterName = "@PATHID";
-            pathId.Value = PATHID;
-            cmd.Parameters.Add(pathId);
-            cmd.Connection = conn;
+            
 
             SqlParameter learnerId = new SqlParameter();
             learnerId.ParameterName = "@learnerid";
@@ -152,7 +148,18 @@ namespace learning_DAL
             conn.Close();
             return data;
         }
-
+        public int get_new_pathid(int learnerid)
+        {
+            int pathid;
+            cmd = new SqlCommand();
+            cmd.CommandText = "select LEARNING_PATH_DETAILS.LEARNING_PATH_ID from " +
+                              "LEARNING_PATH_DETAILS inner join LEARNING_PATH_MASTER on" +
+                              "LEARNING_PATH_DETAILS.LEARNING_PATH_ID = LEARNING_PATH_MASTER.LEARNING_PATH_ID" +
+                              "where LEARNING_PATH_DETAILS.COURSE_ID is null and LEARNING_PATH_MASTER.LEARNER_ID=" + learnerid + ";";
+            cmd.CommandType = CommandType.Text;
+            pathid = (int)cmd.ExecuteScalar();
+            return pathid;
+        }
 
 
         //5

@@ -5,36 +5,43 @@ using System.Web;
 using System.Web.Mvc;
 using LearnerPlatform.Models.Snap97_NS_CS;
 using Learning_strategy;
-using Snap97_NS_CS;
+
 
 namespace LearnerPlatform.Controllers
 {
     public class LearningPathController : Controller
     {
         // GET: LearningPath
-        public ActionResult Index()
+        public ActionResult Index(string searchTerm)
         {
             Learning_strategy_class obj = new Learning_strategy_class();
-            List<Snap97_NS_CS.Learner_Path> l = obj.Get_learning_path((int)Session["id"]);
-            List<LearnerPlatform.Models.Snap97_NS_CS.Learner_Path> learners = new List<LearnerPlatform.Models.Snap97_NS_CS.Learner_Path>();
-            foreach(var l1 in l)
+            int i = (int)Session["id"];
+            obj.Create_learning_path(i);
+            IEnumerable<Snap97_NS_CS.Course> courseobj = obj.GetCourses().Where(x => searchTerm == null || x.course_name.ToUpper().StartsWith(searchTerm.ToUpper()));
+            List<Course> c = new List<Course>();
+            foreach (var course in courseobj)
             {
-                foreach (var l2 in l1.details)
-                {
-                    learners.Add(new Models.Snap97_NS_CS.Learner_Path()
+                c.Add(
+                    new Course()
                     {
-                        details = { new Models.Snap97_NS_CS.Learner_path_details() {
-                            course_id=l2.course_id,
-                            path_id=l2.path_id
-                        } },
-                        master = { new Models.Snap97_NS_CS.Learning_path_masted() {
-                            path_id=l2.path_id,
-                            learner_id=(int)Session["id"]
-                        } }
+                        course_description = course.course_description,
+                        course_duration = course.course_duration,
+                        course_id = course.course_id,
+                        course_name = course.course_name
                     });
-                }
             }
-            return View();
+            if (Session["id"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            else
+                return View(c);
+        }
+        public ActionResult AddToPath(Course course)
+        {
+            List<Course> c = new List<Course>();
+            c.Add(course);
+            return View(c);
         }
     }
 }
