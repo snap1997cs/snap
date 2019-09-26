@@ -8,7 +8,7 @@ using LearnerPlatform.Models.Snap97_NS_CS;
 
 
 namespace LearnerPlatform.Controllers
-{
+{ 
     public class CourseController : Controller
     {
         public ActionResult Index(string searchTerm)

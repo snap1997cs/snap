@@ -39,7 +39,7 @@ namespace Learning_strategy
         ////4
         public int Create_learning_path(int learnerid)
         {
-            int data = obj.create_learning_path( learnerid);
+            int data = obj.create_learning_path(learnerid);
             return data;
         }
         public int Get_new_pathid(int LearnerId)
@@ -51,7 +51,7 @@ namespace Learning_strategy
         public int Get_course_id_by_name(string Cname)
         {
             int cid = obj.get_course_id_by_name(Cname);
-                return cid;
+            return cid;
         }
 
         //5
@@ -121,6 +121,9 @@ namespace Learning_strategy
         //    int feedback = obj.SET_FEEDBACK(empid, courseid, comments, rating);
         //    return feedback;
         //}
-
+        public void delete_Null_Path()
+        {
+            obj.Delete_Null_Path();
+        }
     }
 }

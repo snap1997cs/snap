@@ -164,6 +164,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\LearningPath\Index.cshtml" />
+    <Content Include="Views\LearningPath\AddToPath.cshtml" />
+    <Content Include="Views\LearningPath\CreatePath.cshtml" />
+    <Content Include="Views\LearningPath\CreatePath1.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -23,6 +23,18 @@ namespace learning_DAL
             conn = new SqlConnection(connectionstring);
         }
         //1 Tarun
+        //  delete from LEARNING_PATH_DETAILS where COURSE_ID is null
+        public void Delete_Null_Path()
+        {
+
+            cmd = new SqlCommand();
+            cmd.CommandText = "delete from LEARNING_PATH_DETAILS where COURSE_ID is null";
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = conn;
+            conn.Open();
+            cmd.ExecuteScalar();
+            conn.Close();
+        }
         public List<Course> get_all_course()
         {
             cmd = new SqlCommand();
@@ -135,6 +147,7 @@ namespace learning_DAL
             cmd = new SqlCommand();
             cmd.CommandText = "create_learning_path";
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = conn;
             
 
             SqlParameter learnerId = new SqlParameter();
@@ -150,14 +163,23 @@ namespace learning_DAL
         }
         public int get_new_pathid(int learnerid)
         {
-            int pathid;
+            int pathid=0;
             cmd = new SqlCommand();
-            cmd.CommandText = "select LEARNING_PATH_DETAILS.LEARNING_PATH_ID from " +
-                              "LEARNING_PATH_DETAILS inner join LEARNING_PATH_MASTER on" +
-                              "LEARNING_PATH_DETAILS.LEARNING_PATH_ID = LEARNING_PATH_MASTER.LEARNING_PATH_ID" +
-                              "where LEARNING_PATH_DETAILS.COURSE_ID is null and LEARNING_PATH_MASTER.LEARNER_ID=" + learnerid + ";";
+            cmd.CommandText = "select LEARNING_PATH_DETAILS.LEARNING_PATH_ID from LEARNING_PATH_DETAILS inner join LEARNING_PATH_MASTER on LEARNING_PATH_DETAILS.LEARNING_PATH_ID = LEARNING_PATH_MASTER.LEARNING_PATH_ID where LEARNING_PATH_DETAILS.COURSE_ID is null and LEARNING_PATH_MASTER.LEARNER_ID=@learnerid;";
             cmd.CommandType = CommandType.Text;
-            pathid = (int)cmd.ExecuteScalar();
+            cmd.Connection = conn;
+            SqlParameter learnerId = new SqlParameter();
+            learnerId.ParameterName = "@learnerid";
+            learnerId.Value = learnerid;
+            cmd.Parameters.Add(learnerId);
+            conn.Open();
+            try
+            {
+                pathid = (int)cmd.ExecuteScalar();
+            }
+            catch
+            { }
+            conn.Close();
             return pathid;
         }
 

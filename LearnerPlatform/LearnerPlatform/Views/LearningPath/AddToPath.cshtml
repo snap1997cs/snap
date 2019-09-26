@@ -1,0 +1,43 @@
+﻿@model IEnumerable<LearnerPlatform.Models.Snap97_NS_CS.Course>
+<h2>AddToPath</h2>
+
+<p>
+    @Html.ActionLink("Add More", "Index")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.course_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.course_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.course_duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.course_description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.course_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.course_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.course_duration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.course_description)
+        </td>
+        <td>@Html.ActionLink("Remove From Path","remove",new {id=item.course_id})
+        </td>
+    </tr>
+}
+</table>
+<<button type="button">@Html.ActionLink("Create Path","CreatePath")</button>
