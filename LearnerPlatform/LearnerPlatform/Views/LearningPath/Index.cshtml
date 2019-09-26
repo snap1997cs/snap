@@ -8,13 +8,12 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.course_id)
+            
         </th>
         <th>
             @Html.DisplayNameFor(model => model.course_name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.course_duration)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.course_description)
@@ -26,13 +25,12 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.course_id)
+                @Html.HiddenFor(modelItem => item.course_id)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.course_name)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.course_duration)
+            <td> 
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.course_description)

@@ -1,12 +1,13 @@
 ﻿@model IEnumerable<LearnerPlatform.Models.Snap97_NS_CS.Course>
 
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.course_id)
+           
         </th>
         <th>
             @Html.DisplayNameFor(model => model.course_name)
@@ -17,29 +18,41 @@
         <th>
             @Html.DisplayNameFor(model => model.course_description)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.course_lvl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseStatus)
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.course_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.course_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.course_duration)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.course_description)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.HiddenFor(modelItem => item.course_id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.course_name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.course_duration)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.course_description)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.course_lvl)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CourseStatus)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+    </td>
+</tr>
 }
 
 </table>

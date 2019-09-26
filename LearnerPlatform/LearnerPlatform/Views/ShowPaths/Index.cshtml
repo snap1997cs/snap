@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<LearnerPlatform.Models.Snap97_NS_CS.Learning_path_masted>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Index","LearningPath")
 </p>
 <table class="table">
     <tr>
@@ -28,9 +28,7 @@
             @Html.DisplayFor(modelItem => item.creation_date)
         </td>
         <td>
-            @Html.ActionLink("Show Courses", "GetPathDetails", new { id=item.path_id}) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Show Courses", "GetPathDetails", new { id=item.path_id})
         </td>
     </tr>
 }

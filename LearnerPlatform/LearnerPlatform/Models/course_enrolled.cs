@@ -21,7 +21,7 @@ namespace LearnerPlatform.Models
             public int learner_id { get; set; }
             public DateTime enrolled_date { get; set; }
             public DateTime completion_date { get; set; }
-            public course_status status { get; set; }
+            //public course_status status { get; set; }
         }
     }
 }

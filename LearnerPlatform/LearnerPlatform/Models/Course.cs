@@ -14,6 +14,13 @@ namespace LearnerPlatform.Models
             intermediate = 2,
             advanced = 3
         }
+        public enum Course_status
+        {
+            enrolled = 1,
+            pending = 2,
+            completed = 3
+
+        }
         public class Course
         {
             [Display(Name ="ID")]
@@ -24,8 +31,10 @@ namespace LearnerPlatform.Models
             public int course_duration { get; set; }
             [Display(Name = "Description")]
             public string course_description { get; set; }
-            [Display(Name = "Course Lever")]
+            [Display(Name = "Course Level")]
             public course_levels course_lvl { get; set; }
+
+            public course_status CourseStatus { get; set; }
         }
     }
 }

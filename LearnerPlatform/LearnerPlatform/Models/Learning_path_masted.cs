@@ -14,6 +14,7 @@ namespace LearnerPlatform.Models
             public int path_id { get; set; }
             public int learner_id { get; set; }
             [Display(Name="Created On")]
+            [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
             public DateTime creation_date { get; set; }
 
         }
