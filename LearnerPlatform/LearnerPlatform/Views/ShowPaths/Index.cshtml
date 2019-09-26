@@ -1,14 +1,25 @@
 ﻿@model IEnumerable<LearnerPlatform.Models.Snap97_NS_CS.Learning_path_masted>
 
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
 <p>
     @Html.ActionLink("Create New", "Index","LearningPath")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.path_id)
+            
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.pathname)
+        </th>
+        <th>
+            
         </th>
         <th>
             @Html.DisplayNameFor(model => model.creation_date)
@@ -19,7 +30,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.path_id)
+            @Html.HiddenFor(modelItem => item.path_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pathname)
         </td>
         <td>
             @Html.HiddenFor(modelItem => item.learner_id)
@@ -28,7 +42,7 @@
             @Html.DisplayFor(modelItem => item.creation_date)
         </td>
         <td>
-            @Html.ActionLink("Show Courses", "GetPathDetails", new { id=item.path_id})
+            @Html.ActionLink("Show Courses", "GetPathDetails", new { id = item.path_id })
         </td>
     </tr>
 }

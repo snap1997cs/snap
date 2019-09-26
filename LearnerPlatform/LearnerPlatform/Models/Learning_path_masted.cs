@@ -12,6 +12,8 @@ namespace LearnerPlatform.Models
         {
             [Display(Name ="Paths")]
             public int path_id { get; set; }
+            [Display(Name ="Path Name")]
+            public string pathname { get; set; }
             public int learner_id { get; set; }
             [Display(Name="Created On")]
             [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]

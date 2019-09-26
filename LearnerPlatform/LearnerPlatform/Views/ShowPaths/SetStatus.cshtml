@@ -1,0 +1,60 @@
+﻿@model LearnerPlatform.Models.Snap97_NS_CS.Course
+
+@{
+    ViewBag.Title = "SetStatus";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SetStatus</h2>
+
+<div>
+    <h4>Course</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.course_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.course_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.course_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.course_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.course_duration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.course_duration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.course_description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.course_description)
+        </dd>
+        <dt>
+            @Html.DisplayName("STATUS")
+        </dt>
+        <dd>
+            <select id="status">
+                <option value="Enrolled">Enrolled</option>
+                <option value="Pending">Pending</option>
+                <option value="Completed">Completed</option>
+            </select>
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "GetPathDetails")
+</p>

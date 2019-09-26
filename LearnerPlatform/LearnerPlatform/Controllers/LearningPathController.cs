@@ -92,12 +92,14 @@ namespace LearnerPlatform.Controllers
             return View(c);
         }
         [HttpPost]
-        public ActionResult CreatePath(Course course)
+        public ActionResult CreatePath(string pathname)
         {
             Learning_strategy_class obj = new Learning_strategy_class();
+            obj.Name_my_path((int)Session["PathId"],pathname);
             foreach(var i in c)
             {
                 obj.Add_course_to_lp((int)Session["PathId"],i.course_id);
+                
             }
             c.Clear();
             obj.delete_Null_Path();

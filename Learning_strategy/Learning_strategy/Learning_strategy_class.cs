@@ -47,6 +47,11 @@ namespace Learning_strategy
             int data = obj.get_new_pathid(LearnerId);
             return data;
         }
+        public void Name_my_path(int pathid,string pathname)
+        {
+            obj.name_my_path(pathid, pathname);
+            
+        }
         public List<int> Get_course_by_path(int pathid)
         {
             return obj.get_course_by_path(pathid);

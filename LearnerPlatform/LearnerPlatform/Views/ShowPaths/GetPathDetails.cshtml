@@ -1,13 +1,11 @@
 ﻿@model IEnumerable<LearnerPlatform.Models.Snap97_NS_CS.Course>
 
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
-           
+
         </th>
         <th>
             @Html.DisplayNameFor(model => model.course_name)
@@ -22,8 +20,9 @@
             @Html.DisplayNameFor(model => model.course_lvl)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CourseStatus)
+            @*@Html.DisplayNameFor(model => model.CourseStatus)*@
         </th>
+        
         <th></th>
     </tr>
 
@@ -45,12 +44,15 @@
         @Html.DisplayFor(modelItem => item.course_lvl)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.CourseStatus)
+        @*@Html.DisplayFor(modelItem => item.CourseStatus)*@
     </td>
+    <th>
+        @*@Html.ActionLink("SetStatus","SetStatus",new {id=item.course_id })*@
+    </th>
     <td>
-        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
     </td>
 </tr>
 }

@@ -98,6 +98,25 @@ namespace learning_DAL
             conn.Close();
             return data;
         }
+        public void name_my_path(int pathid,string pathname)
+        {
+            cmd = new SqlCommand();
+            cmd.CommandText = "name_my_path";
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlParameter PathId = new SqlParameter();
+            PathId.ParameterName = "@PATHID";
+            PathId.Value = pathid;
+            cmd.Parameters.Add(PathId);
+            SqlParameter PathName = new SqlParameter();
+            PathName.ParameterName = "@pathname";
+            PathName.Value = pathname;
+            cmd.Parameters.Add(PathName);
+            
+            cmd.Connection = conn;
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();  
+        }
 
         //2
         public List<Course> get_course_details_by_id(int course_id)
@@ -174,10 +193,14 @@ namespace learning_DAL
             learnerId.ParameterName = "@learnerid";
             learnerId.Value = learnerid;
             cmd.Parameters.Add(learnerId);
+            //SqlParameter pathname = new SqlParameter();
+            //pathname.ParameterName = "@pathName";
+            //pathname.Value = PathName;
+            //cmd.Parameters.Add(learnerId);
 
 
             conn.Open();
-            int data = (int)cmd.ExecuteNonQuery();
+            int data = cmd.ExecuteNonQuery();
             conn.Close();
             return data;
         }
@@ -289,9 +312,10 @@ namespace learning_DAL
                 lp_obj.Add(
                              new Learning_path_masted()
                              {
-                                 creation_date=(DateTime)datareader["CREATION_DATE"],
-                                 path_id=(int)datareader["LEARNING_PATH_ID"],
-                                 learner_id=(int)datareader["LEARNER_ID"]
+                                 creation_date = (DateTime)datareader["CREATION_DATE"],
+                                 path_id = (int)datareader["LEARNING_PATH_ID"],
+                                 learner_id = (int)datareader["LEARNER_ID"],
+                                 pathName = datareader["Path_name"].ToString()
                              }
                     );
             }

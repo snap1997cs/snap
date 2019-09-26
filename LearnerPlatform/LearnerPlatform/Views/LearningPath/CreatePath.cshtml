@@ -5,6 +5,8 @@
 </p>
 @using (Html.BeginForm("CreatePath", "LearningPath", FormMethod.Post))
 {
+    <label>Enter Name Of The Path</label>
+    <input type="text" id="pathname" name="pathname" required/>
     <table class="table">
         <tr>
             <th>
