@@ -19,11 +19,6 @@ namespace LearnerPlatform
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Login", action = "Index", id = UrlParameter.Optional}
             );
-            routes.MapRoute(
-                name: "SEARCH",
-                url: "{controller}/{action}/{searchTerm}",
-                defaults: new { controller = "Course", action = "Index", searchTerm = UrlParameter.Optional }
-            );
         }
     }
 }

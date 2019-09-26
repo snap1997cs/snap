@@ -47,6 +47,10 @@ namespace Learning_strategy
             int data = obj.get_new_pathid(LearnerId);
             return data;
         }
+        public List<int> Get_course_by_path(int pathid)
+        {
+            return obj.get_course_by_path(pathid);
+        }
 
         public int Get_course_id_by_name(string Cname)
         {
@@ -68,9 +72,9 @@ namespace Learning_strategy
             return Learner;
         }
         ////7
-        public List<Learner_Path> Get_learning_path(int learnerid)
+        public List<Learning_path_masted> Get_learning_path(int learnerid)
         {
-            List<Learner_Path> learner_Paths = obj.get_learning_path(learnerid);
+            List<Learning_path_masted> learner_Paths = obj.get_learning_path(learnerid);
             return learner_Paths;
         }
         //8 Mallika

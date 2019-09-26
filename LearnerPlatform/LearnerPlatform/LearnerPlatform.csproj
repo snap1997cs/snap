@@ -127,6 +127,7 @@
     <Compile Include="Controllers\LearningPathController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\ShowPathsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -167,6 +168,8 @@
     <Content Include="Views\LearningPath\AddToPath.cshtml" />
     <Content Include="Views\LearningPath\CreatePath.cshtml" />
     <Content Include="Views\LearningPath\CreatePath1.cshtml" />
+    <Content Include="Views\ShowPaths\Index.cshtml" />
+    <Content Include="Views\ShowPaths\GetPathDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

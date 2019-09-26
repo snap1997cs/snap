@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Snap97
+namespace Snap97_NS_CS
 {
     public class Course_recommendation
     {

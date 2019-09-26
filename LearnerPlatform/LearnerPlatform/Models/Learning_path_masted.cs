@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,8 +10,10 @@ namespace LearnerPlatform.Models
     {
         public class Learning_path_masted
         {
+            [Display(Name ="Paths")]
             public int path_id { get; set; }
             public int learner_id { get; set; }
+            [Display(Name="Created On")]
             public DateTime creation_date { get; set; }
 
         }

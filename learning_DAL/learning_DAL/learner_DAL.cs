@@ -78,6 +78,26 @@ namespace learning_DAL
             conn.Close();
             return cid;
         }
+        public List<int> get_course_by_path(int PATHID)
+        {
+            cmd = new SqlCommand();
+            cmd.CommandText = "get_course_by_path";
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlParameter pathId = new SqlParameter();
+            pathId.ParameterName = "@PATHID";
+            pathId.Value = PATHID;
+            cmd.Parameters.Add(pathId);
+            cmd.Connection = conn;
+            conn.Open();
+            List<int> data = new List<int>();
+            datareader= cmd.ExecuteReader();
+            while( datareader.Read())
+            {
+                data.Add((int)datareader["Course_id"]);
+            }
+            conn.Close();
+            return data;
+        }
 
         //2
         public List<Course> get_course_details_by_id(int course_id)
@@ -250,9 +270,9 @@ namespace learning_DAL
             return learner_obj;
         }
         //7
-        public List<Learner_Path> get_learning_path(int learnerid)
+        public List<Learning_path_masted> get_learning_path(int learnerid)
         {
-            List<Learner_Path> lp_obj = new List<Learner_Path>();
+            List<Learning_path_masted> lp_obj = new List<Learning_path_masted>();
             cmd = new SqlCommand();
             cmd.CommandText = "get_learning_path";
             cmd.CommandType = CommandType.StoredProcedure;
@@ -267,26 +287,12 @@ namespace learning_DAL
             {
 
                 lp_obj.Add(
-                    new Learner_Path()
-                    {
-                        details = new List<Learner_path_details>()
-                        {
-                             new Learner_path_details()
-                             {
-                                 course_id=(int)datareader["COURSE_ID"],
-                                 path_id=(int)datareader["LEARNING_PATH_ID"]
-                             }
-                        },
-                        master = new List<Learning_path_masted>()
-                        {
                              new Learning_path_masted()
                              {
                                  creation_date=(DateTime)datareader["CREATION_DATE"],
                                  path_id=(int)datareader["LEARNING_PATH_ID"],
                                  learner_id=(int)datareader["LEARNER_ID"]
                              }
-                        }
-                    }
                     );
             }
             conn.Close();

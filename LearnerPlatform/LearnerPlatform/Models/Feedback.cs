@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace LearnerPlatform.Models
 {
-    namespace Snap97
+    namespace Snap97_NS_CS
     {
         public class Feedback
         {
