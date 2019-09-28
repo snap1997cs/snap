@@ -15,6 +15,8 @@ namespace LearnerPlatform.Controllers
         {
             Session["id"]= null;
             Session["name"] = null;
+            ViewData["validate"] = Session["account_validate"];
+            ViewData["message"] = Session["timeout"];
             return View();
         }
         [HttpPost]
@@ -22,15 +24,21 @@ namespace LearnerPlatform.Controllers
         {
             
             Learning_strategy_class obj = new Learning_strategy_class();
-          Learner l= obj.Get_all_learners().Where(x => x.learner_pass== lc.learner_pass.ToString()&&x.learner_email==lc.learner_email).First();
-            if(!l.learner_id.Equals(null))
+            try
             {
-                Session["id"] = l.learner_id;
-                Session["name"] = l.learner_name;
-                return RedirectToAction("Index","Home");
+                Learner l = obj.Get_all_learners().Where(x => x.learner_pass == lc.learner_pass.ToString() && x.learner_email == lc.learner_email).First();
+                if (!l.learner_id.Equals(null))
+                {
+                    Session["id"] = l.learner_id;
+                    Session["name"] = l.learner_name;
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ViewData["Message"] = "Login failed!!! invalid credentials";
+                }
             }
-            else
-            {
+            catch {
                 ViewData["Message"] = "Login failed!!! invalid credentials";
             }
             return View();

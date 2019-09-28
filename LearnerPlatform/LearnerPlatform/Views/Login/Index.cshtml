@@ -1,11 +1,11 @@
 ﻿@model LearnerPlatform.Models.Snap97_NS_CS.Learner
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = " ";
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>@Html.ViewData["validate"]</h2>
 
 
 @using (Html.BeginForm()) 
@@ -13,7 +13,6 @@
     @Html.AntiForgeryToken()
     
 <div class="form-horizontal">
-    <h4>Learner</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
@@ -37,7 +36,7 @@
             <input type="submit" value="Login" class="btn btn-default" />
         </div>
     </div>
-    <h1>@Html.ViewData["message"]</h1>
+    <h1 class = "text-danger" >@Html.ViewData["message"]</h1>
 </div>
 }
 

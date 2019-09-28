@@ -1,4 +1,7 @@
-﻿@model IEnumerable<LearnerPlatform.Models.Snap97_NS_CS.Course>
+﻿@*@model IEnumerable<LearnerPlatform.Models.Snap97_NS_CS.Course>*@
+@model PagedList.IPagedList<LearnerPlatform.Models.Snap97_NS_CS.Course>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Index";
@@ -7,30 +10,36 @@
 <h2>Courses available</h2>
 <form method="get">
     <input type="text" name="searchTerm" />
-    <input type="submit" value="Search" id="submit"/>
+    <input type="submit" value="Search" id="submit" />
 </form>
 
 <table class="table">
     <tr>
         <th></th>
         <th>
-            @Html.DisplayNameFor(model => model.course_name)
+            @Html.ActionLink("Course", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr id="courses">
-        <td>
-            @Html.HiddenFor(modelItem => item.course_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.course_name)
-        </td>
-        <td>
-            @Html.ActionLink("Details", "Details", new {id=item.course_id})
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr id="courses">
+            <td>
+                @Html.HiddenFor(modelItem => item.course_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.course_name)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.course_id })
+            </td>
+        </tr>
+    }
 
 </table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

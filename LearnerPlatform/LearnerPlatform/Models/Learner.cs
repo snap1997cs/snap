@@ -15,28 +15,29 @@ namespace LearnerPlatform.Models
 
 
 
-
+            
             [Display(Name = "Name")]
             [Required(ErrorMessage ="This Field is required")]
             public string learner_name { get; set; }
 
 
-
+            
             [Display(Name = "Grade")]
             [Required(ErrorMessage = "This Field is required")]
             public string learner_grade { get; set; }
 
 
 
-
+            
             [Display(Name = "Role")]
             [Required(ErrorMessage = "This Field is required")]
             public string learner_roll { get; set; }
 
 
-
-            [Required(ErrorMessage ="Enter your MailID")]
+            
+            
             [Display(Name ="Email")]
+            [Required(ErrorMessage = "Enter your MailID")]
             [DataType(DataType.EmailAddress)]
             public string learner_email { get; set; }
 

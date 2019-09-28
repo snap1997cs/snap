@@ -1,0 +1,50 @@
+﻿@model LearnerPlatform.Models.Snap97_NS_CS.Course
+
+@{
+    ViewBag.Title = "delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Confirm Deletion</h2>
+
+<div>
+    <hr />
+    <h4>Are You sure You want to delete</h4>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.HiddenFor(model => model.course_id)
+        </dt>
+
+        <dd>
+            @Html.HiddenFor(model => model.course_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.course_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.course_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.course_duration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.course_duration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.course_description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.course_description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Delete", "remove",new {id=Model.course_id })
+</p>

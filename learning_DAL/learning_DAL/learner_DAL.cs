@@ -34,6 +34,13 @@ namespace learning_DAL
             conn.Open();
             cmd.ExecuteScalar();
             conn.Close();
+            SqlCommand cmd1 = new SqlCommand();
+            cmd1.CommandText = "delete from LEARNING_PATH_MASTER where Path_name is null";
+            cmd1.CommandType = CommandType.Text;
+            cmd1.Connection = conn;
+            conn.Open();
+            cmd1.ExecuteScalar();
+            conn.Close();
         }
         public List<Course> get_all_course()
         {
@@ -61,6 +68,38 @@ namespace learning_DAL
             return course_obj;
 
         }
+        public void Add_account(string name, string email, string grade, string role, string password)
+        {
+            cmd = new SqlCommand();
+            cmd.CommandText = "Add_account";
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlParameter Name = new SqlParameter();
+            SqlParameter Email = new SqlParameter();
+            SqlParameter Grade = new SqlParameter();
+            SqlParameter Role = new SqlParameter();
+            SqlParameter Password = new SqlParameter();
+            Name.ParameterName = "@name";
+            Email.ParameterName = "@email";
+            Grade.ParameterName = "@grade";
+            Role.ParameterName = "@role";
+            Password.ParameterName = "@password";
+            Name.Value = name;
+            Email.Value = email;
+            Grade.Value = grade;
+            Role.Value = role;
+            Password.Value = password;
+            cmd.Parameters.Add(Name);
+            cmd.Parameters.Add(Email);
+            cmd.Parameters.Add(Grade);
+            cmd.Parameters.Add(Role);
+            cmd.Parameters.Add(Password);
+            cmd.Connection = conn;
+            conn.Open();
+            cmd.ExecuteScalar();
+            conn.Close();
+        }
+
+
 
         public int get_course_id_by_name(string cname)
         {

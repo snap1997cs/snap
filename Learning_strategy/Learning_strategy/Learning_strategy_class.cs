@@ -62,6 +62,10 @@ namespace Learning_strategy
             int cid = obj.get_course_id_by_name(Cname);
             return cid;
         }
+        public void Add_Account(string name, string email, string grade, string role, string password)
+        {
+            obj.Add_account(name, email, grade, role, password);
+        }
 
         //5
         public int Enroll_for_course(int course_id, int learner_id, int course_status, DateTime completion_date)

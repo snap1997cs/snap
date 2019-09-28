@@ -24,36 +24,30 @@ namespace LearnerPlatform.Controllers
         [HttpPost]
         public ActionResult Index(Learner learner)
         {
-            int data;
-            string connectionstring = ConfigurationManager.ConnectionStrings["Snap"].ConnectionString;
-            SqlConnection conn = new SqlConnection(connectionstring);
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "INSERT INTO [dbo].[learner]"+
-                "([learner_ID],[learner_NAME],[learner_EMAIL],[learner_GRADE],[learner_ROLE],[learner_pass])"+
-                "VALUES("+learner.learner_id+",'"+learner.learner_name+"','"+learner.learner_email+"','"+learner.learner_grade+"','"+learner.learner_roll+"','"+learner.learner_pass+"')";
-            cmd.CommandType = CommandType.Text;
-            cmd.Connection = conn;
-            conn.Open();
-            try
-            { 
-                 data = cmd.ExecuteNonQuery();
-            }
-            catch(Exception ex)
-            {
-                 data = 0;
-                Log.Info(ex.Message);
-            }
-            if (data == 1)
-            {
-                ViewData["message"] = "Account Created sucessfully";
-                return RedirectToAction("Index", "Login");
-            }
-            else
-            {
-                
-                ViewData["message"] = "Invalid Details.... Please check the Credentials and enter again";
-                return View();
-            }
+            
+                Learning_strategy_class obj = new Learning_strategy_class();
+                try
+                {
+                    List<Snap97_NS_CS.Learner> learners = obj.Get_all_learners().Where(x => x.learner_email == learner.learner_email).ToList();
+                    if (learners.Count() == 0)
+                    {
+                        obj.Add_Account(learner.learner_name, learner.learner_email, learner.learner_grade, learner.learner_roll, learner.learner_pass);
+                        Session["account_validate"] = "Account Created sucessfully";
+                        return RedirectToAction("Index", "Login");
+                    }
+                    else
+                    {
+                        ViewData["message"] = "User Already exist!!!";
+                        return View();
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    Log.Info(ex.Message);
+                    return View();
+                }
+            
         }
     }
 }

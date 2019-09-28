@@ -35,7 +35,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.course_description)
         </td>
-        <td>@Html.ActionLink("Remove From Path","remove",new {id=item.course_id})
+        <td>@Html.ActionLink("Remove From Path","delete",new {id=item.course_id})
         </td>
     </tr>
 }

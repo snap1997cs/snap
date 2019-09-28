@@ -8,10 +8,10 @@
 
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.course_name)
+            @Html.ActionLink("Course", "GetPathDetails", new { sortOrder = ViewBag.NameSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.course_duration)
+            @Html.ActionLink("Duration", "GetPathDetails", new { sortOrder = ViewBag.DurationSortParm })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.course_description)
