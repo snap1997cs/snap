@@ -88,21 +88,5 @@ namespace LearnerPlatform.Controllers
                 return View(courses);
             }
         }
-
-
-        //public ActionResult SetStatus(int id)
-        //{
-        //    Learning_strategy_class obj = new Learning_strategy_class();
-        //    Snap97_NS_CS.Course courseobj = obj.GetCourses().Where(x => x.course_id == id).FirstOrDefault();
-        //    Course course = new Course()
-        //    {
-        //        course_description = courseobj.course_description,
-        //        course_duration = courseobj.course_duration,
-        //        course_id = courseobj.course_id,
-        //        course_lvl = (course_levels)courseobj.course_lvl,
-        //        course_name = courseobj.course_name
-        //    };
-        //    return View(course);
-        //}
     }
 }
